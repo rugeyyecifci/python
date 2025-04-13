@@ -1,0 +1,24 @@
+import random
+kolon_sayisi = int(input("kaç kolon oynayacaksınız? "))
+kupon = []
+
+for i in range(kolon_sayisi):
+    kupon.append( set() )
+    while len(kupon[i]) < 6:
+        kupon[i].add( random.randrange(1, 50) )
+
+print("KUPONUNUZ:")
+for i in range(kolon_sayisi):
+    print( sorted(kupon[i]) )
+
+print("ÇEKİLİŞ:")
+cekilis = set()
+while len(cekilis) < 6:
+    cekilis.add( random.randrange(1, 50) )
+print( sorted(cekilis) )
+
+print("KUPONUNUZUN BAŞARISI:")
+for i in range(kolon_sayisi):
+    print( sorted(kupon[i]), "->", len( kupon[i] & cekilis ) )
+    # "kupon[i] & cekilis" len() içinde yazılmazsa
+    # kesişim kümesi (tutan numaralar) print edilir
