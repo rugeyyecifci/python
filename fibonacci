@@ -1,0 +1,18 @@
+adet = int(input("Kaç adet Fibonacci elemanı görüntülenecek ? :"))
+sayac = 1
+birinci, ikinci = 0, 1
+
+print(birinci, end=", ")
+while sayac < adet:
+    print(ikinci, end=", ")
+    birinci, ikinci = ikinci, birinci+ikinci
+    sayac += 1
+
+# limit verilince
+limit = int(input("Hangi değerden küçük olan Fibonacci elemanları görüntülenecek ? :"))
+birinci, ikinci = 0, 1
+
+print(birinci, end=", ")
+while ikinci < limit:
+    print(ikinci, end=", ")
+    birinci, ikinci = ikinci, birinci+ikinci
