@@ -1,0 +1,11 @@
+with open("finalsınavı.txt", "r") as f:
+    g = open("geçenler.txt", "w")
+    k = open("kalanlar.txt", "w")
+    for satır in f:
+        liste = satır.split(sep=',')
+        if int(liste[2]) >= 60:
+            g.write(satır)
+        else:
+            k.write(satır)
+    g.close()
+    k.close()
