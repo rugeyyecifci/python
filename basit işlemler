@@ -1,0 +1,22 @@
+print("1) Toplama, 2) Çıkarma, 3) Çarpma, 4) Bölme")
+i = int(input("İşlemi Seçin  : "))
+
+if i == 4:
+    a = float(input("Bölüneni girin     : "))
+    b = float(input("Böleni girin       : "))
+    if b == 0:
+        print("Bölüm = sonsuz")
+    else:
+        print("Bölüm = ", a // b)
+        print("Kalan = ", a % b)
+else:
+    a = float(input("İlk sayıyı girin    : "))
+    b = float(input("İkinci sayıyı girin : "))
+
+
+if i == 1:
+    print(a, '+', b, '=', a + b)
+elif i == 2:
+    print(a, '-', b, '=', a - b)
+elif i == 3:
+    print(a, '*', b, '=', a * b)
