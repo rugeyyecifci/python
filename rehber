@@ -1,0 +1,28 @@
+rehber = {"Ali Yılmaz": {"Mobil":"(213)3456789",
+                         "Ev":"(326)7326181",
+                         "İş":"(326)2432423"},
+          "Selim Solmaz": {"Mobil":"(213)3214123",
+                           "İş":"(321)4523333",
+                           "E-posta":"solmaz@abc.com"}
+         }
+
+while True: # sürekli çalışma döngüsü (şart değil)
+    aranan = input("Aranacak veri : ")
+    bulundu = False
+    for kisi, bilgiler in rehber.items(): #k, v
+        for tur, numara in bilgiler.items(): #k2, v2
+            if numara == aranan:
+                print(kisi, "-", tur)
+                bulundu = True
+
+    if not bulundu:
+        cevap = input("Rehberde bulunamadı, yeni kayıt olarak eklemek istiyor musunuz? [E/H]")
+        if (cevap == 'E' or cevap == 'e'):
+            print(aranan, "verisi için :")
+            isim = input("İsim : ")
+            tur = input("İletişim bilgisi türü : ") # ne tür iletişim bilgisi olduğu
+            if rehber.get(isim):
+                rehber[isim][tur] = aranan
+            else: # kişi rehberde yok ise
+                rehber[isim] = {tur:aranan} # bilgilerini bir sözlük olarak ekliyoruz
+            print(isim, "kişisinin kaydı:", rehber[isim], "\n")
