@@ -1,0 +1,22 @@
+ilk = int(input("Başlangıç değeri: "))
+son = int(input("Bitiş değeri : "))
+liste = []
+
+print("Listeye eklenen asal sayılar:")
+for sayi in range(ilk, son+1):
+    for i in range(2, int(sayi**0.5) + 2):
+        if sayi % i == 0: break
+    if i > int(sayi**0.5):
+        liste.append(sayi)
+        print(sayi, end=" ")
+
+ortalama = sum(liste) / len(liste)
+print("\nOrtalama =", ortalama)
+
+farklar_toplam = 0
+for eleman in liste:
+    farklar_toplam += (eleman - ortalama)**2
+
+varyans = farklar_toplam / (len(liste)-1)
+print("Varyans =", varyans)
+print("Standard Sapma =", varyans**0.5)
