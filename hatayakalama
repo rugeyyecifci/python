@@ -1,0 +1,25 @@
+def bolme_islemi(sayi1, sayi2):
+    try:
+        sonuc = sayi1 / sayi2
+        return sonuc
+    except ZeroDivisionError:
+        return "Hata: Bir sayı sıfıra bölünemez."
+    except TypeError:
+        return "Hata: Lütfen sadece sayı girin."
+
+def kullanıcıdan_girdi_al():
+    try:
+        a = float(input("1. sayıyı girin: "))
+        b = float(input("2. sayıyı girin: "))
+        return a, b
+    except ValueError:
+        print("Hata: Geçerli bir sayı girmelisiniz.")
+        return None, None
+
+
+sayi1, sayi2 = kullanıcıdan_girdi_al()
+
+if sayi1 is not None and sayi2 is not None:
+    print("Sonuç:", bolme_islemi(sayi1, sayi2))
+else:
+    print("İşlem gerçekleştirilemedi.")
