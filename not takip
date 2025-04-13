@@ -1,0 +1,60 @@
+def not_ekle():
+    try:
+        ad = input("Öğrenci adı: ")
+        not1 = float(input("1. Not: "))
+        not2 = float(input("2. Not: "))
+        ort = (not1 + not2) / 2
+        with open("notlar.txt", "a") as f:
+            f.write(f"{ad},{not1},{not2},{ort:.2f}\n")
+        print("Not başarıyla eklendi!")
+    except ValueError:
+        print("Hatalı giriş yaptınız. Sayı girilmesi gereken yere harf girdiniz.")
+
+def notlari_listele():
+    try:
+        with open("notlar.txt", "r") as f:
+            print("\n--- Kayıtlı Notlar ---")
+            for satir in f:
+                ad, n1, n2, ort = satir.strip().split(',')
+                durum = "Geçti" if float(ort) >= 60 else "Kaldı"
+                print(f"{ad}: Ortalama = {ort} ({durum})")
+    except FileNotFoundError:
+        print("Henüz not kaydı yok.")
+
+def ortalama_hesapla():
+    try:
+        with open("notlar.txt", "r") as f:
+            notlar = []
+            for satir in f:
+                _, _, _, ort = satir.strip().split(',')
+                notlar.append(float(ort))
+            if notlar:
+                genel_ort = sum(notlar) / len(notlar)
+                print(f"\nSınıf Ortalaması: {genel_ort:.2f}")
+            else:
+                print("Hiç not yok.")
+    except:
+        print("Hesaplama hatası.")
+
+def menu():
+    while True:
+        print("\n1 - Not Ekle")
+        print("2 - Notları Listele")
+        print("3 - Sınıf Ortalamasını Hesapla")
+        print("4 - Çıkış")
+
+        secim = input("Seçiminiz: ")
+
+        if secim == '1':
+            not_ekle()
+        elif secim == '2':
+            notlari_listele()
+        elif secim == '3':
+            ortalama_hesapla()
+        elif secim == '4':
+            print("Çıkılıyor...")
+            break
+        else:
+            print("Geçersiz seçim!")
+
+menu()
