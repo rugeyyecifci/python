@@ -1,0 +1,18 @@
+# Dosya yazma
+def dosya_yaz():
+    with open('ornek_dosya.txt', 'w') as dosya: 
+        dosya.write("Python ile dosya işlemleri yapıyoruz!\n")
+        dosya.write("Bu python dosya okuma ve yazma örneğidir.\n")
+        dosya.write("Yeni satıra geçtiğimizde bu satır yazılacak.\n")
+    print("Dosyaya yazıldı.")
+
+# Dosya okuma
+def dosya_oku():
+    with open('ornek_dosya.txt', 'r') as dosya: 
+        # Dosyanın tamamını oku ve ekrana yazdır
+        icerik = dosya.read()
+        print("Dosyanın İçeriği:\n", icerik)
+
+# Dosyayı açıp yazalım ve sonra okuyalım
+dosya_yaz()
+dosya_oku()
