@@ -1,0 +1,20 @@
+def asal_mi(sayi):
+    if sayi < 2:
+        return False
+    for i in range(2, int(sayi**0.5) + 1):
+        if sayi % i == 0:
+            return False
+    return True
+
+def asal_sayilari_bul(n):
+    asal_listesi = []
+    for i in range(2, n + 1):
+        if asal_mi(i):
+            asal_listesi.append(i)
+    return asal_listesi
+
+# Fonksiyonu çağır
+ust_sinir = 50
+print(f"1 ile {ust_sinir} arasındaki asal sayılar:")
+print(asal_sayilari_bul(ust_sinir))
+print(asal_mi(40))
