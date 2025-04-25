@@ -1,0 +1,26 @@
+import turtle
+
+def sekil_ciz(kenar_sayisi, renk, dolgu):
+    turtle.color(renk)
+    if dolgu:
+        turtle.begin_fill()
+
+    for _ in range(kenar_sayisi):
+        turtle.forward(100)
+        turtle.left(360 / kenar_sayisi)
+
+    if dolgu:
+        turtle.end_fill()
+
+    turtle.done()
+
+# Kullanıcıdan bilgi al
+try:
+    kenar = int(input("Kaç kenarlı şekil çizilsin? (örneğin 3, 4, 5): "))
+    renk = input("Hangi renkte olsun? (örneğin red, blue, green): ")
+    dolgu_input = input("İçi dolu olsun mu? (evet/hayır): ").lower()
+    dolgu_mu = dolgu_input == "evet"
+
+    sekil_ciz(kenar, renk, dolgu_mu)
+except:
+    print("Hatalı giriş yaptınız.")
