@@ -1,0 +1,36 @@
+import turtle
+
+# ekranı kurma
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+# turtle yratma
+pen = turtle.Turtle()
+pen.color("purple")
+pen.pensize(5)
+
+# R harfi yazmaya başlama
+pen.penup()
+pen.goto(-50, 0)  # Start at a proper location
+pen.pendown()
+
+
+pen.left(90)
+pen.forward(200)
+
+
+pen.right(90)
+pen.forward(100)
+
+
+pen.right(135)
+pen.forward(138)
+
+pen.left(90)
+pen.forward(140)
+
+# turtle saklama
+pen.hideturtle()
+
+# sayfayı açık tutma
+turtle.done()
