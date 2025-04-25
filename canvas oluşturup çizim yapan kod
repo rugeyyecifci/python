@@ -1,0 +1,29 @@
+import tkinter as tk
+
+# Pencereyi oluştur
+pencere = tk.Tk()
+pencere.title("Canvas ile Çizim Uygulaması")
+
+# Canvasoluştur
+canvas = tk.Canvas(pencere, width=1000, height=700, bg="white")
+canvas.pack()
+
+# koordinat tutan değişkenler
+onceki_x, onceki_y = None, None
+
+def ciz(event):
+    global onceki_x, onceki_y
+
+    # önceki varsa aralarını çiz
+    if onceki_x and onceki_y:
+        canvas.create_line(onceki_x, onceki_y, event.x, event.y, fill="black")
+
+    # Yeni koordinatları kaydet
+    onceki_x, onceki_y = event.x, event.y
+
+
+# çizim için fareyi bağlama
+canvas.bind("<B1-Motion>", ciz)
+
+# pencereyi başlat
+pencere.mainloop()
