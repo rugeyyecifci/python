@@ -1,0 +1,53 @@
+def dosyaya_yaz(sayi):
+    with open('sayilar.txt', 'a') as dosya:
+        dosya.write(str(sayi) + '\n')
+
+def dosyayi_oku():
+    try:
+        with open('sayilar.txt', 'r') as dosya:
+            icerik = dosya.read()
+            print("Dosyadaki Sayılar:")
+            print(icerik)
+    except FileNotFoundError:
+        print("Dosya bulunamadı!")
+
+def dosyayi_sil():
+    try:
+        with open('sayilar.txt', 'w') as dosya:  # Dosyayı silip sıfırdan yazmak için
+            dosya.truncate(0)
+        print("Dosya silindi.")
+    except FileNotFoundError:
+        print("Dosya bulunamadı!")
+
+def ana_menu():
+    while True:
+        print("\n--- Ana Menü ---")
+        print("1. Sayı Ekle")
+        print("2. Dosyadaki Sayıları Görüntüle")
+        print("3. Dosyayı Sil")
+        print("4. Çıkış")
+        secim = input("Seçiminizi yapın (1/2/3/4): ")
+
+        if secim == '1':
+            while True:
+                try:
+                    sayi = int(input("Bir sayı girin (Çıkmak için 999): "))
+                    if sayi == 999:
+                        print("Program sonlandırılıyor...")
+                        break
+                    dosyaya_yaz(sayi)
+                    print(f"{sayi} dosyaya kaydedildi.")
+                except ValueError:
+                    print("Lütfen geçerli bir sayı girin.")
+        elif secim == '2':
+            dosyayi_oku()
+        elif secim == '3':
+            dosyayi_sil()
+        elif secim == '4':
+            print("Çıkılıyor...")
+            break
+        else:
+            print("Geçersiz seçenek, tekrar deneyin.")
+
+# Programı başlat
+ana_menu()
